@@ -1,0 +1,78 @@
+#: import c kivy.utils.get_color_from_hex
+
+<c@Button>:
+    background_normal: "button_normal.png"
+    background_down: "button_down.png"
+    background_color: c("#567890")
+BoxLayout:
+    orientation: "vertical" 
+    padding: 40
+    background_color: c("#454545")
+    border: (5,5,5,5 )
+    
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None
+        padding: 20, 10
+        Label:
+            text: "Timer App"
+            color: c("#00000")
+            font_size:20
+            bold: True
+        Label:
+            text: "Project 1"
+            color: c("#00000")
+
+    BoxLayout:
+        canvas:
+            Color: 
+                rgba: (0.5,0.5,.6, .5)
+            Rectangle:
+                size: self.size 
+                pos: self.pos
+        Label:
+            background: c("#454545")
+            id: time
+            text: "00:00:00"
+            font_size:40
+            font_name: "Roboto"
+            markup: True
+            color: c("#452515")
+
+    FloatLayout:
+        orientation: "horizontal"
+        border: 0, 0, 50, 0
+        
+        color: c("#454545")
+        Button:
+            id: start_stop
+            text: "Start"
+            width: "100dp"
+            height: "50dp"
+            size_hint: None, None
+            background_normal: "button_normal.png"
+            background_down: "button_down.png"
+            background_color: c("#567890")
+            border: (2,2,2,2)
+            border_color: c("FFFFFF")
+            border_radius: 50
+            on_press: app.update_counter()
+            pos_hint: {"x": 0.25, "center_y": 0.5}
+           
+        Button:
+            id: stop
+            text: "Reset"
+            on_press: app.reset()
+            width: "100dp"
+            height: "50dp"
+            size_hint: None, None
+            pos_hint: {"x": 0.50 , "center_y": 0.5}
+    BoxLayout:
+        Label:
+            id: counter
+            text: "00:00:00"
+            markup: True
+            font_size: 60
+            spacing: 40 
+            color: c("#3F5F7F")
+            
